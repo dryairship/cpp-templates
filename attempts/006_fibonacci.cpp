@@ -1,29 +1,31 @@
-template <int N>
-class IntPrinter;
+#include <cstdint>
 
-template <int N>
+template <std::uint32_t N>
+class UInt32Printer;
+
+template <std::uint32_t N>
 struct FibonacciImpl
 {
-    static constexpr int theSubSequenceSum = 
+    static constexpr std::uint32_t theSubSequenceSum = 
             FibonacciImpl<N-1>::theSubSequenceSum + 
             FibonacciImpl<N-2>::theSubSequenceSum;
-    IntPrinter<theSubSequenceSum> thePrinter;
+    UInt32Printer<theSubSequenceSum> thePrinter;
 };
 
 template <>
 struct FibonacciImpl<1>
 {
-    IntPrinter<1> thePrinter;
-    static constexpr int theSubSequenceSum = 1;
+    UInt32Printer<1> thePrinter;
+    static constexpr std::uint32_t theSubSequenceSum = 1;
 };
 
 template <>
 struct FibonacciImpl<0>
 {
-    static constexpr int theSubSequenceSum = 0;
+    static constexpr std::uint32_t theSubSequenceSum = 0;
 };
 
-template <int N>
+template <std::uint32_t N>
 class Fibonacci
 {
     static constexpr FibonacciImpl<N> theImpl{};

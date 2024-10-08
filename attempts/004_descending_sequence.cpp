@@ -1,11 +1,12 @@
+#include <cstdint>
 
-template <int N>
-class IntPrinter;
+template <std::uint32_t N>
+class UInt32Printer;
 
 template <int N>
 class DescendingSequence
 {
-    IntPrinter<N> thePrinter;
+    UInt32Printer<N> thePrinter;
     DescendingSequence<N-1> theSubSequence;
 };
 

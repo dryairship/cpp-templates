@@ -1,24 +1,26 @@
-template <int N>
-class IntPrinter;
+#include <cstdint>
 
-template <int N>
+template <std::uint32_t N>
+class UInt32Printer;
+
+template <std::uint32_t N>
 struct FactorialImpl
 {
     static constexpr FactorialImpl<N-1> theSubFactorial{};
-    static constexpr int theResult = N * theSubFactorial.theResult;
+    static constexpr std::uint32_t theResult = N * theSubFactorial.theResult;
 };
 
 template <>
 struct FactorialImpl<0>
 {
-    static constexpr int theResult = 1;
+    static constexpr std::uint32_t theResult = 1;
 };
 
-template <int N>
+template <std::uint32_t N>
 class Factorial
 {
     static constexpr FactorialImpl<N> theImpl{};
-    IntPrinter<theImpl.theResult> thePrinter;
+    UInt32Printer<theImpl.theResult> thePrinter;
 };
 
 int main()
