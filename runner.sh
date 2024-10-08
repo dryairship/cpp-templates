@@ -1,1 +1,1 @@
-g++ $1 -o /dev/null 2> >(grep -Eo "class [A-Za-z0-9]+Printer<.*>") | grep -o '<[^>]*>' | sed 's/[<>]//g'
+g++ -std=c++20 $1 -o /dev/null 2> >(grep -Eo "class [A-Za-z0-9]+Printer<.*>") | grep -o '<[^>]*>' | sed 's/[<>]//g'
